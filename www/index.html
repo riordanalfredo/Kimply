@@ -56,26 +56,60 @@
         <br> <br> <br>
         
         <!-- Colored FAB button with ripple -->
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ">
-          <i class="material-icons">volume_up</i>
+        <button onclick= "muteOrOn()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ">
+          <div id = "bg"></div>
         </button> &nbsp; &nbsp; &nbsp; 
         
         <!-- Colored FAB button with ripple -->
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ">
-          <i class="material-icons">translate</i>
+          <i class="material-icons">favorite</i>
         </button>
         <br> <br>
     
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width=300px;"> <i class="material-icons md-48">equalizer</i> HIGHSCORE</button>
             
     
-   <embed src="bgmusic/game.mp3" autostart="false" loop="true"
+   <embed id="bg" src="bgmusic/game.mp3" autostart="false" loop="true"
 width="2" height="0" volume=20%> 
 
     </div>
     <footer> Developed by &copy; ElevenFour Inc</footer>   
 </body>
+
+    <script>
     
+    var bg = document.getElementById("bg");
+    
+     var bgStatement= "<i class='material-icons'>" + "volume_up" + "</i>";
+    bg.innerHTML = bgStatement;
+        
+    var bgCond = false;    
+    function muteOrOn(){
+        
+        bgCond = false;
+        if(a == false){
+            
+            bg.muted = true;
+            bgCond = false;
+            volume = "volume_off"
+            
+        }
+        else {
+            
+            bg.muted = false;
+            bgCond = true;
+            volume = "volume_up"
+        }
+        
+        var bgStatement= "<i class='material-icons'>" + volume + "</i>";
+        bg.innerHTML = bgStatement;
+    }
+    
+   
+    
+    
+    
+    </script>
 
 </html>
 

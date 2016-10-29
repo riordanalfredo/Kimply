@@ -20,7 +20,7 @@ var colors = ["red", "green", "blue", "purple", "yellow", "orange","teal"];
         setTimeout(switchColor, 1000);
     }
 
-    setTimeout(switchColor,3000);  
+    setTimeout(switchColor,5000);  
 
         var intervalId = setInterval(updateTime, 0);;
         var progressbar = document.getElementById("progressbar");
