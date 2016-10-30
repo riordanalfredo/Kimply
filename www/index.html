@@ -56,12 +56,12 @@
         <br> <br> <br>
         
         <!-- Colored FAB button with ripple -->
-        <button onclick= "muteOrOn()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ">
+        <button onclick= "toogleState(this)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect on">
           <div id = "bg"></div>
         </button> &nbsp; &nbsp; &nbsp; 
         
         <!-- Colored FAB button with ripple -->
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ">
+        <button onclick = "location.href = 'https://www.instagram.com/riordanalfredo/?hl=en' "class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ">
           <i class="material-icons">favorite</i>
         </button>
         <br> <br>
@@ -69,36 +69,36 @@
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width=300px;"> <i class="material-icons md-48">equalizer</i> HIGHSCORE</button>
             
     
-   <embed id="bg" src="bgmusic/game.mp3" autostart="false" loop="true"
-width="2" height="0" volume=20%> 
+   <audio id="audio" autoplay loop width="2" height="0"> 
+       <source src="bgmusic/game.mp3">
+    </audio >
 
     </div>
     <footer> Developed by &copy; ElevenFour Inc</footer>   
 </body>
 
     <script>
-    
     var bg = document.getElementById("bg");
-    
-     var bgStatement= "<i class='material-icons'>" + "volume_up" + "</i>";
+    var aud = document.getElementById("audio");    
+        
+    //initial
+    var bgStatement= "<i class='material-icons'>" + "volume_up" + "</i>";
     bg.innerHTML = bgStatement;
         
-    var bgCond = false;    
-    function muteOrOn(){
+    function toogleState(a){
         
-        bgCond = false;
-        if(a == false){
+        if(a.className == "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect on"){
             
-            bg.muted = true;
-            bgCond = false;
-            volume = "volume_off"
+            a.className = "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect off";
+            aud.muted = true;
+            volume = "volume_off";
             
         }
         else {
             
-            bg.muted = false;
-            bgCond = true;
-            volume = "volume_up"
+            a.className = "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect on";
+            aud.muted = false;
+            volume = "volume_up";
         }
         
         var bgStatement= "<i class='material-icons'>" + volume + "</i>";

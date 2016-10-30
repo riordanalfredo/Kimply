@@ -15,20 +15,22 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- */
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+ *
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+
+footer{
+    margin-top: 20%;
+    text-align: center;
+    color:#212121;
+
+    
 }
 
-body {
-  
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    text-transform:uppercase;
-    width:100%;
+.button {
+    
+    height: 60px;
+    width: 40%;
+    
 }
 
 .card{
@@ -39,7 +41,7 @@ body {
     border-color:black;
     border-style: solid;
     position:relative;
-    margin-left:32%;
+    margin:0 0 0 0;
 }
 /* Portrait layout (default) */
 .app {
@@ -64,19 +66,9 @@ body {
                                       /* offset horizontal: half of image width and text area width */
     }
 }
-.button {
-    padding: 12px 28px;
-    width: 25%;
-    
-}
-h4 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
-}
+
+
+
 #middle{
     
     border-style:solid;

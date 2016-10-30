@@ -1,0 +1,85 @@
+<html>
+    <head>
+    <title>Kimply</title>
+        <title>Kimply Color Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/material.min.css">
+        <script src="css/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+         
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="shortcut icon" sizes="196x196" href="img/kimply.png" />
+        <link rel="apple-touch-icon-precomposed" href="img/kimply.png" />
+        <link rel="stylesheet" href="css/game.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/home.css">
+         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <audio id="audio" src="http://www.soundjay.com/button/button-37.wav" autostart="false"></audio>
+    </head>
+ <body>
+
+         <br>
+        <div style="float:left;">
+            <button onclick="location.href = 'index.html'" class="mdl-button mdl-js-button mdl-js-ripple-effect "> <i class="material-icons">pause</i> </button>
+        </div>
+        <br>
+        <div align=center style="margin:auto;float:center">  
+            
+            
+              <h3>SCORE: <b>26</b><p><font size="3px" color="grey">HIGH SCORE: 30</font></p>  </h3>  
+              
+            
+            <!-- Image -->
+            <div id="theDiv" class="card">
+                  <!--<img src="img/giphy.gif" width="400px">-->
+                <img src="img/backg.png" style="position:relative;opacity:0.2;margin-top:19%" width=125px>
+                
+            </div>
+              
+            
+            <br>
+                <div style="margin: 0 10% 0 10%"> <progress id="progressbar" class="mdl-progress mdl-js-progress" style="width: 300px;" value="0" max="1000"></progress> </div> 
+            
+            <br><br>    
+            <!-- Accent-colored raised button with ripple -->
+                <div>
+            
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button" onclick="PlaySound()">
+                   MAGENTA
+                </button> &nbsp &nbsp &nbsp 
+                    
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button" onclick="PlaySound()">
+                   TEAL
+                </button> 
+                    <br> <br> 
+                    
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button" onclick="PlaySound()">
+                   RED
+                </button> &nbsp &nbsp &nbsp 
+        
+                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button" onclick="PlaySound()">
+                   CYAN
+                </button> 
+                  
+                </div>
+           
+            
+            
+        </div>
+         
+    </body>
+        
+       
+    <script type="text/javascript">
+        function PlaySound() {
+          var sound = document.getElementById("audio");
+          sound.play()
+      }
+        
+    </script>    
+    <script type="text/javascript" src="js/gamepage.js"></script>    
+    <footer> Developed by &copy; ElevenFour Inc</footer>  
+</html> 
+
+
