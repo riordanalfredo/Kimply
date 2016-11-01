@@ -36,12 +36,20 @@ footer{
 .card{
     
     border-radius:25px;
-    height:190px;
-    width:150px;
-    border-color:black;
+    height:40%;
+    width:60%;
+    border-color: gray;
     border-style: solid;
     position:relative;
     margin:0 0 0 0;
+}
+/* Centering Content */
+
+.centerContent{
+    
+    text-align:center;
+    margin: 20 20 20 20;
+    
 }
 /* Portrait layout (default) */
 .app {
