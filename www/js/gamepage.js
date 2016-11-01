@@ -12,6 +12,7 @@ function showPage() {
 var colors = ["red", "green", "blue", "yellow"];
 var currentColor = 0;
 var index = [];
+var timer = 1500;
 
     function switchColor() {    
        
@@ -19,8 +20,15 @@ var index = [];
         
          index.push(randomColorIndex);
          randomColorIndex = checkerFunction(randomColorIndex);
+         
+        $('#theDiv').css('background-color', colors[randomColorIndex]);
+        var now = new Date();
+       
         
-        function checkerFunction(random){
+        setTimeout(switchColor, timer);
+    }
+
+    function checkerFunction(random){
             
             var value = 0;
             if(index.length == 2) { 
@@ -40,13 +48,6 @@ var index = [];
             else { value = random }
             return value;
         }
-         
-        $('#theDiv').css('background-color', colors[randomColorIndex]);
-        var now = new Date();
-       
-        
-        setTimeout(switchColor, 1000);
-    }
 
     setTimeout(switchColor,0);  
 
@@ -76,7 +77,7 @@ var choice = ["",""];
 var colors = ["RED", "GREEN", "BLUE", "YELLOW", "GREEN"];
 
 setTimeout(randomChoices,0);
-setInterval(randomChoices,1000);
+setInterval(randomChoices,timer);
 
 var answera = document.getElementById("answera");
 var answerb = document.getElementById("answerb");
@@ -91,11 +92,12 @@ function randomChoices(){
     
             if (random1 == random2){
                 
-                var operatorRandom = Math.floor(Math.random()*3) + 1;
+                var operatorRandom = Math.floor(Math.random() * 3 ) + 1;
                 
                 if ( random1 <= 3)
                     {
                         random2 = Math.abs(random2 - operatorRandom);
+    
                     }
                 else if ( random1 == 0 )
                     {
