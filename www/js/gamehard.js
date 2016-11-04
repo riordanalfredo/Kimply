@@ -9,11 +9,12 @@ function showPage() {
   document.getElementById("myDiv").style.display = "block";
 }
 
-var colors = ["RED", "GREEN", "BLUE", "YELLOW","PURPLE"];
+var colors = ["RED", "GREEN", "BLUE", "YELLOW","ORANGE","PINK","PURPLE","BROWN","VIOLET","MAROON"];
 var currentColor = 0;
 var index = [];
 var timer = 1000;
 var colorVault = [];
+var iterations = 9;
 
 
 //Global varible for randomChoices
@@ -22,11 +23,13 @@ var choice = ["",""];
 var vault = [];
 var answera = document.getElementById("answera");
 var answerb = document.getElementById("answerb");
+var answerc = document.getElementById("answerc");
+var answerd = document.getElementById("answerd");
 
 
 function switchColor() {    
             
-            var randomColorIndex =  Math.round(Math.random() * 4);
+            var randomColorIndex =  Math.round(Math.random() * iterations);
         
             index.push(randomColorIndex);
             randomColorIndex = checkerFunction(randomColorIndex);
@@ -48,7 +51,7 @@ function checkerFunction(random){
                 
                 if (index[0] == index[1])
                      {
-                        value = Math.round(Math.random() * 4);
+                        value = Math.round(Math.random() * iterations);
                         index = [random];
                         index.push(value);
                         value = checkerFunction(value);
@@ -73,44 +76,37 @@ function randomChoices(){
     
             answera.innerHTML = "";
             answerb.innerHTML = "";
-            var random1 = Math.round(Math.random()*4);
-            var random2 = Math.ceil(Math.random()*4);
-        
+            answerc.innerHTML = "";
+            answerd.innerHTML = "";
     
-            if (random1 == random2){
-                
-                var operatorRandom = Math.floor(Math.random() * 4 ) + 1;
-                
-                if ( random1 <= 4)
-                    {
-                        random2 = Math.abs(random2 - operatorRandom);
+            var random1 = Math.round(Math.random()*iterations);
+            var random2 = Math.ceil(Math.random()*iterations);
+            var random3 = Math.ceil(Math.random()*iterations);
+            var random4 = Math.ceil(Math.random()*iterations);
     
-                    }
-                else if ( random1 == 0 )
-                    {
-                        random2 = random2 + operatorRandom;
-                    }
-                else if (random1 >= 5){
-                    
-                        randomChoices();
+            if (random1 == random2 | random1 == random3 | random1 == random4 | random2 == random4 | random2 == random3 | random3 == random4)
+                {
+                
+                    randomChoices();
                 }
+            else
+                {
                 
-            }    
-        
-    
-            if( colorVault[colorVault.length - 1] == colors[random1] | colorVault[colorVault.length - 1] == colors[random2]){
-        
+                    if( colorVault[colorVault.length - 1] == colors[random1] | colorVault[colorVault.length - 1] == colors[random2] | colorVault[colorVault.length - 1] == colors[random4] | colorVault[colorVault.length - 1] == colors[random3])
+                         {
                 
-                answera.innerHTML = colors[random1];
-                answerb.innerHTML = colors[random2];
-               
+                            answera.innerHTML = colors[random1];
+                            answerb.innerHTML = colors[random2];
+                            answerc.innerHTML = colors[random3];
+                            answerd.innerHTML = colors[random4];    
             
-            } else {
+                         } 
+                    else {
                 
-                   randomChoices();
+                            randomChoices();
                 
-            }
-              
+                         }
+                }   
 }
 
 
@@ -119,7 +115,7 @@ function randomChoices(){
 // -------------------------------------------------- Timer CountDown ------------------------------------------------------//
 
 var timeElement = document.getElementById('time');
-timeElement.innerHTML = '7';
+timeElement.innerHTML = '10';
 setTimeout(setInterval(timerCountdown,1000),1000);
  
 function timerCountdown(){
@@ -174,6 +170,13 @@ function scoreCalculator(i){
     else if (i == "b"){
             storage.push(answerb.innerHTML);
         }
+    else if ( i == "c")
+        {
+            storage.push(answerc.innerHTML);
+        }
+    else if (i == "d"){
+            storage.push(answerd.innerHTML);
+        }
     
     if (storage[0] !== storage[1])
     {
@@ -220,9 +223,6 @@ function wrongAnswer(){
     timeElement.innerHTML = total;
     
 }
-
-
-
 
     
 /* Storing the HighScore */

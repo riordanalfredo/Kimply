@@ -3,23 +3,26 @@
     <title>Kimply</title>
         <title>Kimply Color Game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/material.min.css">
-        <script src="css/material.min.js"></script>
+        <link rel="stylesheet" href="../css/material.min.css">
+        <script src="../css/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
          
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <link rel="shortcut icon" sizes="196x196" href="img/kimply.png" />
-        <link rel="apple-touch-icon-precomposed" href="img/kimply.png" />
+        <link rel="shortcut icon" sizes="196x196" href="../img/kimply.png" />
+        <link rel="apple-touch-icon-precomposed" href="../img/kimply.png" />
         
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/home.css">
-        <link rel="stylesheet" href="css/game.css">
-        <link rel="stylesheet" href="css/modal.css">
-        
+        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/home.css">
+        <link rel="stylesheet" href="../css/game.css">
+        <link rel="stylesheet" href="../css/modal.css">
+        <style>
+            div.wrap {height:100%; overflow:hidden;}
+            body, html {height:100%;}
+        </style>
         <audio id="audio" src="http://www.soundjay.com/button/button-37.wav" autostart="false"></audio>
     </head>
- <body>
+ <body> <div class="wrap">
 
         <div style="float:left;">
             <button id="myBtn" class="mdl-button mdl-js-button mdl-js-ripple-effect "> 
@@ -45,7 +48,7 @@
                     <br> <br> 
                     
                     <!-- FAB button with ripple -->
-                    <button  onclick="location.href = 'index.html'" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
+                    <button  onclick="location.href = '../index.html'" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
                       <i class="material-icons">home</i>
                     </button>    
                         
@@ -62,18 +65,16 @@
         <div align=center style="margin:auto;float:center">  
             
             
-              <h3>SCORE: <b id="score"></b><p><font size="3px" color="grey">HIGH SCORE: 755</font></p>  </h3>  
+              <h4>SCORE: <b id="score"></b><p><font size="3px" color="grey">HIGH SCORE: <b id="highscore"></b></font></p>  </h4>  
               
             <!-- Image -->
             <div id="theDiv" class="card">
                   <!--<img src="img/giphy.gif" width="400px">-->
-                
-                <img src="img/backg.png" style="position:relative;opacity:0.2;margin-top:35px" width=180px>
+                <img src="../img/backg.png" style="position:relative;opacity:0.2;margin-top:35px" width=180px>
                
             </div>
-      
             <br>
-            <div id=time class='time'></div>
+                <div id=time class='time'></div>
             <br>
             <!-- Accent-colored raised button with ripple -->
                 <div style="float:center;">          
@@ -82,11 +83,21 @@
                 </button>&nbsp; &nbsp; &nbsp; &nbsp; 
                 <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('b');">
                    <b id="answerb"></b> 
+                </button> <br><br>
+                <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('c');">
+                   <b id="answerc"></b> 
+                </button> &nbsp; &nbsp; &nbsp;  
+                    <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('d');">
+                   <b id="answerd"></b> 
                 </button>
+                    
                 </div>
+            
+                <footer> Developed by &copy; ElevenFour Inc</footer>
+            
             </div>
-            <footer> Developed by &copy; ElevenFour Inc</footer> 
-     
+             
+     </div>
     </body>
         
 
@@ -97,7 +108,7 @@
           sound.play()
         }
     </script>    
-    <script type="text/javascript" src="js/gamepage.js"></script>
+    <script type="text/javascript" src="../js/gamehard.js"></script>
     <script>
     // Get the modal
         var modal = document.getElementById('myModal');
