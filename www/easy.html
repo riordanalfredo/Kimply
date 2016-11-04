@@ -14,7 +14,7 @@
         
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/home.css">
-         
+        <link rel="stylesheet" href="css/game.css">
         <link rel="stylesheet" href="css/modal.css">
         
         <audio id="audio" src="http://www.soundjay.com/button/button-37.wav" autostart="false"></audio>
@@ -57,39 +57,36 @@
               </div>
            </div>
         </div>
-     </div>
+            </div>
         <br> 
         <div align=center style="margin:auto;float:center">  
             
             
               <h3>SCORE: <b id="score"></b><p><font size="3px" color="grey">HIGH SCORE: 755</font></p>  </h3>  
               
-            
             <!-- Image -->
             <div id="theDiv" class="card">
                   <!--<img src="img/giphy.gif" width="400px">-->
-                <img src="img/backg.png" style="position:relative;opacity:0.2;margin-top:35px" width=180px>
                 
+                <img src="img/backg.png" style="position:relative;opacity:0.2;margin-top:35px" width=180px>
+               
             </div>
-              
-            
+      
             <br>
-                <div style="margin: 0 10% 0 10%"> <progress id="progressbar" style="width: 80%;" value="0" max="2000"></progress> </div> 
-            
-            <br><br>    
+            <div id=time class='time'></div>
+            <br>
             <!-- Accent-colored raised button with ripple -->
-                <div>
-            
-                <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator();">
+                <div style="float:center;">          
+                <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('a');">
                    <b id="answera"></b>
-                </button>&nbsp &nbsp &nbsp &nbsp 
-                <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator();">
+                </button>&nbsp; &nbsp; &nbsp; &nbsp; 
+                <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('b');">
                    <b id="answerb"></b> 
                 </button>
                 </div>
-            <footer> Developed by &copy; ElevenFour Inc</footer>     
-        </div>
-        
+            </div>
+            <footer> Developed by &copy; ElevenFour Inc</footer> 
+     
     </body>
         
 
@@ -129,6 +126,6 @@
             }
         }        
             
-            
+        
     </script>        
 </html>
