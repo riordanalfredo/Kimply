@@ -19,7 +19,7 @@
 * { -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 
 footer{
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
     color:#212121;
 
@@ -36,12 +36,20 @@ footer{
 .card{
     
     border-radius:25px;
-    height:190px;
-    width:150px;
-    border-color:black;
+    height:40%;
+    width:60%;
+    border-color: gray;
     border-style: solid;
     position:relative;
     margin:0 0 0 0;
+}
+/* Centering Content */
+
+.centerContent{
+    
+    text-align:center;
+    margin: 20 20 20 20;
+    
 }
 /* Portrait layout (default) */
 .app {
@@ -129,48 +137,4 @@ float:left;
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
-}
-
-/* Firefox */
-progress.test_bar::-moz-progress-bar {
-        background-image: -moz-linear-gradient(
-                center bottom,
-                rgb(43,194,83) 37%,
-                rgb(84,240,84) 69%
-        );
-}
- 
-/* Chrome */
-progress.test_bar::-webkit-progress-value {
-        background-image: -webkit-gradient(
-                linear,
-                left bottom,
-                left top,
-                color-stop(0, rgb(43,194,83)),
-                color-stop(1, rgb(84,240,84))
-        );
-        background-image: -webkit-linear-gradient(
-                center bottom,
-                rgb(43,194,83) 37%,
-                rgb(84,240,84) 69%
-        );
-}
- 
-/* Polyfill */
-progress.test_bar[aria-valuenow]:before {
-        background-image: -moz-linear-gradient(
-                center bottom,
-                rgb(43,194,83) 37%,
-                rgb(84,240,84) 69%
-        );
-        background-image: -ms-linear-gradient(
-                center bottom,
-                rgb(43,194,83) 37%,
-                rgb(84,240,84) 69%
-        );
-        background-image: -o-linear-gradient(
-                center bottom,
-                rgb(43,194,83) 37%,
-                rgb(84,240,84) 69%
-        );
 }

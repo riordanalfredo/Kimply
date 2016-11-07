@@ -15,14 +15,17 @@ var index = [];
 var timer = 1000;
 var colorVault = [];
 
-
 //Global varible for randomChoices
 
 var choice = ["",""];
 var vault = [];
 var answera = document.getElementById("answera");
 var answerb = document.getElementById("answerb");
+var handler = [];
 
+var frontBackSelector = 1;
+ $('#card').flip({trigger:'manual'});
+var randomCard = Math.round(Math.random()*4);
 
 function switchColor() {    
             
@@ -32,8 +35,41 @@ function switchColor() {
             randomColorIndex = checkerFunction(randomColorIndex);
             var randomColor = colors[randomColorIndex];
     
-            $('#theDiv').css('background-color', randomColor);
+            var flipx = {
+              axis: 'x',
+            };
+            var flipy = {
+              axis: 'y',
+            };
+            var flipz = {
+              axis: '',
+            };
+            var flipz = {
+              flip: 'x',
+              reverse:true
+            };
+            var flipz = {
+              axis: 'y',
+              reverse:true    
+            };
+            var sequence = [flipx,flipy,flipz] ;
     
+            
+            
+            $('#card').flip(sequence[randomCard]);
+                
+                if( frontBackSelector == 1){
+                    
+                    $('#front').css('background-color', randomColor)
+                    frontBackSelector += 1;
+                    
+                } else if(frontBackSelector !== 1){
+                    
+                    $('#back').css('background-color', randomColor)
+                    frontBackSelector -= 1;
+                }
+                
+            
             colorVault.push(randomColor);
             
     }
@@ -119,7 +155,7 @@ function randomChoices(){
 // -------------------------------------------------- Timer CountDown ------------------------------------------------------//
 
 var timeElement = document.getElementById('time');
-timeElement.innerHTML = '7';
+timeElement.innerHTML = '10';
 setTimeout(setInterval(timerCountdown,1000),1000);
  
 function timerCountdown(){
@@ -184,7 +220,9 @@ function scoreCalculator(i){
         correctAnswer();
     }
     storage = [];
+    
     switchColor();
+    $('#card').flip('toggle');
     randomChoices();
     
      if (parseInt(timeElement.innerHTML) <= 0){
@@ -221,10 +259,6 @@ function wrongAnswer(){
     
 }
 
-
-
-
-    
 /* Storing the HighScore */
 
 var highscore = document.getElementById("highscore");
