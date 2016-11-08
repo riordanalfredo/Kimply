@@ -44,15 +44,15 @@ function switchColor() {
             var flipz = {
               axis: '',
             };
-            var flipz = {
+            var fliprevx = {
               flip: 'x',
               reverse:true
             };
-            var flipz = {
+            var fliprevy= {
               axis: 'y',
               reverse:true    
             };
-            var sequence = [flipx,flipy,flipz] ;
+            var sequence = [flipx,flipy,flipz,fliprevx,fliprevy] ;
     
             
             
@@ -156,8 +156,12 @@ function randomChoices(){
 
 var timeElement = document.getElementById('time');
 timeElement.innerHTML = '10';
+
 setTimeout(setInterval(timerCountdown,1000),1000);
  
+var TotalSeconds    = 10;
+var documentWidth  = $(bar).width();
+
 function timerCountdown(){
     
     var currentValue = parseInt(timeElement.innerHTML);
@@ -186,6 +190,17 @@ function timerCountdown(){
     else{
          timeElement.innerHTML = total;
     }
+    
+    var seconds = parseInt(timeElement.innerHTML);
+    if (seconds > 10){
+        seconds = 10;
+    }
+    var progresBarWidth = (seconds * documentWidth / TotalSeconds);
+
+    $('#progress').animate({
+            width: progresBarWidth + 'px'
+    }, 1000);
+    
 }
 
 

@@ -35,13 +35,15 @@ footer{
 
 .card{
     
-    border-radius:25px;
+    
     height:40%;
     width:60%;
-    border-color: gray;
-    border-style: solid;
     position:relative;
     margin:0 0 0 0;
+    
+    -webkit-box-shadow: 1px 20px 56px -18px rgba(0,0,0,1);
+    -moz-box-shadow: 1px 20px 56px -18px rgba(0,0,0,1);
+    box-shadow: 1px 20px 56px -18px rgba(0,0,0,1);
 }
 /* Centering Content */
 
@@ -51,6 +53,7 @@ footer{
     margin: 20 20 20 20;
     
 }
+
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
@@ -75,8 +78,6 @@ footer{
     }
 }
 
-
-
 #middle{
     
     border-style:solid;
@@ -84,6 +85,7 @@ footer{
     border-width: 2px;
     
 }
+
 #options{
 margin-left: 500px;
 float:left;    
@@ -97,44 +99,4 @@ float:left;
 {
     position: absolute;
     top : 50%;
-}
-.sliderSize{
-    width:100px;
-    
-}
-.event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:16px;
-    margin:0px 30px;
-    padding:2px 0px;
-}
-
-.event.listening {
-    background-color:#333333;
-    display:block;
-}
-
-.event.received {
-    font-family: Roboto;
-    background-color:orangered;
-    display:none;
-}
-
-@keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-@-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
 }

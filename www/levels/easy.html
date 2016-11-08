@@ -59,7 +59,7 @@
         </div>
             </div>
         <br> 
-        <div align=center style="margin:auto;float:center">  
+        <div align=center style="margin:auto">  
             
             
               <h3>SCORE: <b id="score"></b><p><font size="3px" color="grey">HIGH SCORE: <b id="highscore"></b></font></p>  </h3>  
@@ -74,13 +74,17 @@
                     <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px>
                 </div> 
                   <!--<img src="img/giphy.gif" width="400px">-->
-                
-               
+
             </div>
-      
             <br>
             <div id=time class='time'></div>
             <br>
+            </div>
+                <div id=bar class="progressbox">
+                    <div id='progress' class="progressbar"></div>
+                </div>
+            <br>
+            <div align=center style="margin:auto">  
             <!-- Accent-colored raised button with ripple -->
                 <div style="float:center;">          
                 <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('a');">
