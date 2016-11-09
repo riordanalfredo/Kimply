@@ -181,6 +181,8 @@ function timerCountdown(){
     }
     
       if (parseInt(timeElement.innerHTML) <= 0){
+          
+        timeElement.innerHTML = total;
         if(confirm('GAME OVER')){
             saveHighscore();
             window.location.reload();  
@@ -244,8 +246,6 @@ function scoreCalculator(i){
         if(confirm('GAME OVER')){
             saveHighscore();
             window.location.reload();
-            
-            
         }
     }
 }
@@ -269,6 +269,7 @@ function wrongAnswer(){
     var currentValue = parseInt(timeElement.innerHTML);
     var total = currentValue - 2;
     
+    if(currentValue == 0){total = 0;} else if(currentValue == 1){total = 0}; 
     
     timeElement.innerHTML = total;
     
