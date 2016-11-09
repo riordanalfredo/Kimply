@@ -39,7 +39,7 @@
 </head>
 
     
-<body>
+<body id="body">
    
 <div align=center style="margin:auto;">  
 
@@ -74,10 +74,9 @@
         <img src="img/title.png" width="75%" style="float:center;">
         <br> 
         <hr> <br> 
-        <button onclick="location.href = 'level.html';" height="200px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" id="start"> <i class="material-icons md-48">play_arrow</i> </button>
-         <br> <br> <hr>
-        
-        <br> <br> 
+        <button onclick="fadeout()" height="200px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" id="start"> <i class="material-icons md-48">play_arrow</i> </button>
+    
+        <br> <br> <hr> <br> <br> 
         
         <!-- Colored FAB button with ripple -->
         <button onclick= "toogleState(this)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect on">
@@ -93,8 +92,7 @@
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width=300px;"> <i class="material-icons md-48">equalizer</i> HIGHSCORE</button>
             
     
-   <audio id="audio" autoplay loop width="2" height="0"> 
-       <source src="bgmusic/game.mp3">
+   <audio id="audio" src="bgmusic/a.mp3" autoplay loop width="2" height="0"> 
     </audio >
 
     </div>
@@ -102,10 +100,26 @@
     <footer> Developed by &copy; ElevenFour Inc</footer>   
 </body>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/modal.js"></script>
     <script>
+    
+    var audio = document.getElementById("audio")
+    audio.volume = 0.5;
     var bg = document.getElementById("bg");
     var aud = document.getElementById("audio");    
+        
+    function fadeout(){
+        
+         var newVolume = 0.1;
+        
+        $("#audio").animate({volume: newVolume}, 700);
+        setTimeout(location,700)
+        function location(){
+            window.location = "level.html";
+            
+        }
+    }    
         
     //initial
     var bgStatement= "<i class='material-icons'>" + "volume_up" + "</i>";
@@ -130,12 +144,7 @@
         var bgStatement= "<i class='material-icons'>" + volume + "</i>";
         bg.innerHTML = bgStatement;
     }
-    
-   
-    
-    
-    
+        
     </script>
-
 </html>
 

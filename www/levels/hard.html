@@ -12,6 +12,8 @@
         <link rel="shortcut icon" sizes="196x196" href="../img/kimply.png" />
         <link rel="apple-touch-icon-precomposed" href="../img/kimply.png" />
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        
         <link rel="stylesheet" href="../css/index.css">
         <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/game.css">
@@ -66,15 +68,27 @@
             
               <h4>SCORE: <b id="score"></b><p><font size="3px" color="grey">HIGH SCORE: <b id="highscore"></b></font></p>  </h4>  
               
+              
             <!-- Image -->
-            <div id="theDiv" class="card">
+            <div id="card" class="card">
+                <div class="front" id="front" > 
+                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px>
+                </div> 
+                
+                <div class="back" id="back">
+                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px>
+                </div> 
                   <!--<img src="img/giphy.gif" width="400px">-->
-                <img src="../img/backg.png" style="position:relative;opacity:0.2;margin-top:35px" width=180px>
-               
+                </div>
+            <br>
+            <div id=time class='time'></div>
+            <br>
             </div>
+                <div id=bar class="progressbox">
+                    <div id='progress' class="progressbar"></div>
+                </div>
             <br>
-                <div id=time class='time'></div>
-            <br>
+            <div align=center style="margin:auto">  
             <!-- Accent-colored raised button with ripple -->
                 <div style="float:center;">          
                 <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('a');">
@@ -91,16 +105,22 @@
                 </button>
                     
                 </div>
-            
+            </div>
                 <footer> Developed by &copy; ElevenFour Inc</footer>
             
             </div>
              
      </div>
+     
+       <audio id="audio" src="bgmusic/game.mp3" autoplay loop width="2" height="0"> 
+    </audio >
+
     </body>
         
-
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.flip.min.js"></script>    
     <script type="text/javascript">
         function PlaySound() {
           var sound = document.getElementById("audio");

@@ -102,7 +102,17 @@ function checkerFunction(random){
 
 
 //---------------------------------Random Answer Choice--------------------------------------//
-
+function fadeout(){
+        
+         var newVolume = 0.2;
+        
+        $("#audio").animate({volume: newVolume}, 700);
+        setTimeout(location,700)
+        function location(){
+            window.location = "level.html";
+            
+        }
+    }    
     
     
 function randomChoices(){
