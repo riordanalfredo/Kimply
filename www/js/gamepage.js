@@ -163,13 +163,21 @@ function randomChoices(){
 
 // -------------------------------------------------------------------------------------------------------------------------//
 // -------------------------------------------------- Timer CountDown ------------------------------------------------------//
-
+var TotalSeconds    = 5;
 var timeElement = document.getElementById('time');
-timeElement.innerHTML = '10';
+timeElement.innerHTML = TotalSeconds;
+var anjay = 0;
+var amboy = 0;
 
-setTimeout(setInterval(timerCountdown,1000),1000);
- 
-var TotalSeconds    = 10;
+timeInterval();
+
+function timeInterval(){
+    anjay = setInterval(timerCountdown,1000);
+    amboy = setTimeout(anjay,1000);
+    
+}
+
+
 var documentWidth  = $(bar).width();
 
 function timerCountdown(){
@@ -193,19 +201,18 @@ function timerCountdown(){
       if (parseInt(timeElement.innerHTML) <= 0){
           
         timeElement.innerHTML = total;
-        if(confirm('GAME OVER')){
-            saveHighscore();
-            window.location.reload();  
-        }
+        saveHighscore();
+        stopTheGame();  
     }
     
     else{
+        
          timeElement.innerHTML = total;
     }
     
     var seconds = parseInt(timeElement.innerHTML);
-    if (seconds > 10){
-        seconds = 10;
+    if (seconds > TotalSeconds){
+        seconds = TotalSeconds;
     }
     var progresBarWidth = (seconds * documentWidth / TotalSeconds);
 
@@ -253,12 +260,10 @@ function scoreCalculator(i){
     randomChoices();
     
      if (parseInt(timeElement.innerHTML) <= 0){
-        if(confirm('GAME OVER')){
             saveHighscore();
-            window.location.reload();
+            stopTheGame();
         }
     }
-}
 
 
 function correctAnswer(){
@@ -288,7 +293,7 @@ function wrongAnswer(){
 /* Storing the HighScore */
 
 var highscore = document.getElementById("highscore");
-highscore.innerHTML = "0";
+highscore.innerHTML = 0;
 var STORAGE_KEY = "score";
 
 function saveHighscore(){
@@ -312,4 +317,7 @@ function saveHighscore(){
         console.log("Error: No Local Storage item for \"" + STORAGE_KEY + "\" key. "); 
         console.log("Uncomment and run the code to save person to Local Storage.");
     }
+
+/*printing score and highscore*/
+
 
