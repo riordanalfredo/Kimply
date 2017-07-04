@@ -44,15 +44,15 @@ function switchColor() {
             var flipz = {
               axis: '',
             };
-            var flipz = {
+            var fliprevx = {
               flip: 'x',
               reverse:true
             };
-            var flipz = {
+            var fliprevy= {
               axis: 'y',
               reverse:true    
             };
-            var sequence = [flipx,flipy,flipz] ;
+            var sequence = [flipx,flipy,flipz,fliprevx,fliprevy] ;
     
             
             
@@ -102,7 +102,17 @@ function checkerFunction(random){
 
 
 //---------------------------------Random Answer Choice--------------------------------------//
-
+function fadeout(){
+        
+         var newVolume = 0.2;
+        
+        $("#audio").animate({volume: newVolume}, 700);
+        setTimeout(location,700)
+        function location(){
+            window.location = "level.html";
+            
+        }
+    }    
     
     
 function randomChoices(){
@@ -153,11 +163,23 @@ function randomChoices(){
 
 // -------------------------------------------------------------------------------------------------------------------------//
 // -------------------------------------------------- Timer CountDown ------------------------------------------------------//
-
+var TotalSeconds    = 5;
 var timeElement = document.getElementById('time');
-timeElement.innerHTML = '10';
-setTimeout(setInterval(timerCountdown,1000),1000);
- 
+timeElement.innerHTML = TotalSeconds;
+var anjay = 0;
+var amboy = 0;
+
+timeInterval();
+
+function timeInterval(){
+    anjay = setInterval(timerCountdown,1000);
+    amboy = setTimeout(anjay,1000);
+    
+}
+
+
+var documentWidth  = $(bar).width();
+
 function timerCountdown(){
     
     var currentValue = parseInt(timeElement.innerHTML);
@@ -177,15 +199,27 @@ function timerCountdown(){
     }
     
       if (parseInt(timeElement.innerHTML) <= 0){
-        if(confirm('GAME OVER')){
-            saveHighscore();
-            window.location.reload();  
-        }
+          
+        timeElement.innerHTML = total;
+        saveHighscore();
+        stopTheGame();  
     }
     
     else{
+        
          timeElement.innerHTML = total;
     }
+    
+    var seconds = parseInt(timeElement.innerHTML);
+    if (seconds > TotalSeconds){
+        seconds = TotalSeconds;
+    }
+    var progresBarWidth = (seconds * documentWidth / TotalSeconds);
+
+    $('#progress').animate({
+            width: progresBarWidth + 'px'
+    }, 1000);
+    
 }
 
 
@@ -226,14 +260,10 @@ function scoreCalculator(i){
     randomChoices();
     
      if (parseInt(timeElement.innerHTML) <= 0){
-        if(confirm('GAME OVER')){
             saveHighscore();
-            window.location.reload();
-            
-            
+            stopTheGame();
         }
     }
-}
 
 
 function correctAnswer(){
@@ -254,6 +284,7 @@ function wrongAnswer(){
     var currentValue = parseInt(timeElement.innerHTML);
     var total = currentValue - 2;
     
+    if(currentValue == 0){total = 0;} else if(currentValue == 1){total = 0}; 
     
     timeElement.innerHTML = total;
     
@@ -262,7 +293,7 @@ function wrongAnswer(){
 /* Storing the HighScore */
 
 var highscore = document.getElementById("highscore");
-highscore.innerHTML = "0";
+highscore.innerHTML = 0;
 var STORAGE_KEY = "score";
 
 function saveHighscore(){
@@ -287,3 +318,13 @@ function saveHighscore(){
         console.log("Uncomment and run the code to save person to Local Storage.");
     }
 
+/*printing score and highscore*/
+
+jQuery(document).ready(function($) {  
+
+// site preloader -- also uncomment the div in the header and the css style for #preloader
+$(window).load(function(){
+	$('#preloader').fadeOut('slow',function(){$(this).remove();});
+});
+
+});

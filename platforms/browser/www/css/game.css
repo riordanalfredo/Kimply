@@ -1,40 +1,4 @@
 
-/* Animation for progressbar 
-
-.progressbar {
-    
-  position:relative;
-  width: 80%;
-  margin: 25px auto;
-  border: solid 1px gray;
-}
-.progressbar .inner {
-  height: 15px;
-  animation: progressbar-countdown;
-  /* Placeholder, this will be updated using javascript 
-  animation-duration: 40s;
-  /* We stop in the end 
-  animation-iteration-count: 1;
-  /* Stay on pause when the animation is finished finished 
-  animation-fill-mode: forwards;
-  /* We start paused, we start the animation using javascript 
-  animation-play-state: paused;
-  /* We want a linear animation, ease-out is standard 
-  animation-timing-function: linear;
-}
-@keyframes progressbar-countdown {
-  0% {
-    width: 100%;
-    background: #0F0;
-  }
-  100% {
-    width: 0%;
-    background: #F00;
-  }
-}
-
-*/
-
 .time {
     
     margin-left:40%;
@@ -42,4 +6,29 @@
     font-weight: bold;
     font-size: 32px;
 
+}
+.progressbox{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    opacity: 0.5;
+}
+
+.progressbar{
+    
+    height:15px;
+    background: -webkit-linear-gradient(left, deepskyblue  , aqua); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, deepskyblue  , aqua); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, deepskyblue  , aqua); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, deepskyblue  , aqua); /* Standard syntax (must be last) */
+}
+
+.answer{
+   
+    font-size: 17px;
+    font-weight: bold;
+    border-bottom-style:solid;
+    border-bottom-width: 5px;
+    border-bottom-color: #ff80AB;
+    
 }

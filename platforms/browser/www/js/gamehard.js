@@ -26,23 +26,60 @@ var answerb = document.getElementById("answerb");
 var answerc = document.getElementById("answerc");
 var answerd = document.getElementById("answerd");
 
+var frontBackSelector = 1;
+ $('#card').flip({trigger:'manual'});
+var randomCard = Math.round(Math.random()*4);
 
 function switchColor() {    
             
-            var randomColorIndex =  Math.round(Math.random() * iterations);
+            var randomColorIndex =  Math.round(Math.random() * 4);
         
             index.push(randomColorIndex);
             randomColorIndex = checkerFunction(randomColorIndex);
             var randomColor = colors[randomColorIndex];
     
-            $('#theDiv').css('background-color', randomColor);
+            var flipx = {
+              axis: 'x',
+            };
+            var flipy = {
+              axis: 'y',
+            };
+            var flipz = {
+              axis: '',
+            };
+            var fliprevx = {
+              flip: 'x',
+              reverse:true
+            };
+            var fliprevy= {
+              axis: 'y',
+              reverse:true    
+            };
+            var sequence = [flipx,flipy,flipz,fliprevx,fliprevy] ;
     
+            
+            
+            $('#card').flip(sequence[randomCard]);
+                
+                if( frontBackSelector == 1){
+                    
+                    $('#front').css('background-color', randomColor)
+                    frontBackSelector += 1;
+                    
+                } else if(frontBackSelector !== 1){
+                    
+                    $('#back').css('background-color', randomColor)
+                    frontBackSelector -= 1;
+                }
+                
+            
             colorVault.push(randomColor);
             
     }
 
 switchColor(); //Running Switch Color 
 randomChoices();
+
 
 function checkerFunction(random){
             
@@ -117,7 +154,10 @@ function randomChoices(){
 var timeElement = document.getElementById('time');
 timeElement.innerHTML = '10';
 setTimeout(setInterval(timerCountdown,1000),1000);
- 
+
+var TotalSeconds    = 10;
+var documentWidth  = $(bar).width();
+
 function timerCountdown(){
     
     var currentValue = parseInt(timeElement.innerHTML);
@@ -137,6 +177,8 @@ function timerCountdown(){
     }
     
       if (parseInt(timeElement.innerHTML) <= 0){
+          
+        timeElement.innerHTML = total;
         if(confirm('GAME OVER')){
             saveHighscore();
             window.location.reload();  
@@ -146,6 +188,17 @@ function timerCountdown(){
     else{
          timeElement.innerHTML = total;
     }
+    
+    var seconds = parseInt(timeElement.innerHTML);
+    if (seconds > 10){
+        seconds = 10;
+    }
+    var progresBarWidth = (seconds * documentWidth / TotalSeconds);
+
+    $('#progress').animate({
+            width: progresBarWidth + 'px'
+    }, 1000);
+    
 }
 
 
@@ -187,7 +240,9 @@ function scoreCalculator(i){
         correctAnswer();
     }
     storage = [];
+ 
     switchColor();
+    $('#card').flip('toggle');
     randomChoices();
     
      if (parseInt(timeElement.innerHTML) <= 0){
@@ -219,12 +274,12 @@ function wrongAnswer(){
     var currentValue = parseInt(timeElement.innerHTML);
     var total = currentValue - 2;
     
+     if(currentValue == 0){total = 0;} else if(currentValue == 1){total = 0}; 
     
     timeElement.innerHTML = total;
     
 }
 
-    
 /* Storing the HighScore */
 
 var highscore = document.getElementById("highscore");

@@ -3,20 +3,11 @@ footer{
     color:#212121;
 }
 
-.answer{
-   
-    font-size: 20px;
-    border-bottom-style:solid;
-    border-bottom-width: 5px;
-    border-bottom-color: darkgray;
-    
-}
 .button {
-    
-    height: 60px;
-    width: 45%;
-    
+    height: 50px;
+    width: 43%;
 }
+
 
 .return{
     height: 70px;
