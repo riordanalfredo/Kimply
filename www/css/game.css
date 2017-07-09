@@ -1,11 +1,15 @@
-
+@import url("../css/material-icons.css");
 .time {
     
     margin-left:40%;
     margin-right:40%;
     font-weight: bold;
     font-size: 32px;
-
+    
+     text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    
 }
 .progressbox{
     width:60%;
@@ -28,7 +32,7 @@
     font-size: 17px;
     font-weight: bold;
     border-bottom-style:solid;
-    border-bottom-width: 5px;
-    border-bottom-color: #ff80AB;
+    border-bottom-width: 0px;
+    border-bottom-color: ;
     
 }

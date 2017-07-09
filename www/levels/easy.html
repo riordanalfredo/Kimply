@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/material.min.css">
         <script src="../css/material.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
         <link rel="stylesheet" type="text/css" href="../css/csshake.min.css">
         
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -17,19 +17,26 @@
         <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/game.css">
         <link rel="stylesheet" href="../css/modal.css">
-        <link rel="stylesheet" href="css/fakeLoader.css">
+     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <audio id="audio" src="http://www.soundjay.com/button/button-37.wav" autostart="false"></audio>
     </head>
     
 <div id="preloader"></div>    
  <body>
-
+        
         <div style="float:left;">
             <button id="myBtn" class="mdl-button mdl-js-button mdl-js-ripple-effect" > 
                 <i class="material-icons" >pause</i> 
             </button>
             
+        <div style="float:right">
+            
+        <button id="muteButton" onclick= "toogleState(this)" class="mdl-button mdl-js-button mdl-js-ripple-effect on">
+                <div id = "bg"></div>
+            </button>
+              
+        </div>    
             <!-- The Modal -->
         <div id="myModal" class="modal">
 
@@ -48,16 +55,18 @@
                     </button>
                     <br> <br> 
                     
-                    <!-- FAB button with ripple -->
-                    <button  onclick="location.href = '../index.html'" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
-                      <i class="material-icons">home</i>
-                    </button>    
+                     
                         
-                    &nbsp; &nbsp;    
+                    
                     <!-- FAB button with ripple -->
                     <button onclick="location.href = ''" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
                       <i class="material-icons">replay</i>
-                    </button>               
+                    </button>
+                         &nbsp; &nbsp;   
+                    <!-- FAB button with ripple -->
+                    <button  onclick="window.history.go(-1); return false;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
+                      <i class="material-icons">home</i>
+                    </button>       
               </div>
            </div>
         </div>
@@ -75,7 +84,7 @@
                 </div> 
                 
                 <div class="back" id="back">
-                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px>
+                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px class="shake-chunk">
                 </div> 
                   <!--<img src="img/giphy.gif" width="400px">-->
 
@@ -102,7 +111,7 @@
                 </button>
                 </div>
             </div>
-            <footer> Developed by &copy; ElevenFour Inc</footer> 
+            <footer> Developed by &copy; Walf Redo</footer> 
      
          <div id="myClose" class="modal">
 
@@ -115,29 +124,38 @@
                     <HR>
                     
                     <br>
-                    <div id='yourScore'></div>
-                        <br>
-                    <div id='yourHighscore'></div>
+                        <table style="margin-left:25%;">
+                         <tr>
+                            <td><b>SCORE: </b> 
+                            <td> &nbsp;<font id='yourScore'>
+                            </tr>
+                            <tr>
+                            <td><b>HIGHSCORE: 
+                            <td> &nbsp;<font id='yourHighscore'>
+                            </tr>  </b> 
+                        </table>
+                         <br><br>
                     
-                    <!-- FAB button with ripple -->
+                        <!-- FAB button with ripple -->
                     <button onclick="location.href = ''" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
                       <i class="material-icons">replay</i>
-                    </button>   &nbsp; &nbsp; 
+                    </button>  &nbsp; &nbsp;
+                             
                         
                     <!-- FAB button with ripple -->
-                    <button  onclick="location.href = '../index.html'" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
+                    <button  onclick="window.history.go(-1); return false;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
                       <i class="material-icons">home</i>
-                    </button>                            
-              </div>
+                    </button>   
+                        
+                   
+              </div>        
            </div>
         </div>
-            
+              <audio id="music" src="../bgmusic/b.mp3" autoplay loop width="2" height="0"> </audio >
             
     </body>
         
-            <audio id="audio" src="../bgmusic/s.mp3" autoplay loop width="2" height="0"> 
-    </audio >
-
+           
 
             <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
             <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
@@ -147,10 +165,15 @@
                     sound.play();
                 }
             </script>
-            <script type="text/javascript" src="../js/alert.js"></script>
+               
+            <script type="text/javascript" src="../js/mutegame.js"></script>        
             <script type="text/javascript" src="../js/gamepage.js"></script>
-            <script type="text/javascript" src="../js/jquery.flip.min.js"></script>       
+            <script type="text/javascript" src="../js/alert.js"></script>
+            <script type="text/javascript" src="../js/jquery.flip.min.js"></script> 
+                       
             <script type="text/javascript">
+             
+              
             // Get the modal
                 var modal = document.getElementById('myModal');
 

@@ -31,15 +31,31 @@
                 <br> <br> 
             <hr>
         </div>
-       <footer> Developed by &copy; ElevenFour Inc</footer>   
+       <footer> Developed by &copy; Walf Redo</footer>   
     </body>
-    <audio id="audio" src="bgmusic/a.mp3" autoplay loop width="2" height="0"> 
-    </audio >
+  
+     <audio id="audio" src="bgmusic/a.mp3" autoplay loop width="2" height="0"> </audio>
+<script>
+    
+var aud = document.getElementById("audio");  
+var STORAGE_KEY_SONG = "mute";
 
+ var muteJSON = localStorage.getItem(STORAGE_KEY_SONG);
+    if (muteJSON)
+    {
+        var muteCond = JSON.parse(muteJSON);
+        if(muteCond.cond == true){
+            
+            aud.muted = true;
+           
+        }
+                
+    }
+    else
+    {
+        localStorage.setItem(STORAGE_KEY_SONG, JSON.stringify(muteCondition));
+    }    
     
-    <script>
-    var audio = document.getElementById("audio")
-    audio.volume = 0.5;
+</script>
     
-    </script>
-</html>
+   </html>

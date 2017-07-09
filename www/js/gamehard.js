@@ -9,7 +9,7 @@ function showPage() {
   document.getElementById("myDiv").style.display = "block";
 }
 
-var colors = ["RED", "GREEN", "BLUE", "YELLOW","ORANGE","PINK","PURPLE","BROWN","VIOLET","MAROON"];
+var colors = ["RED", "GREEN", "SALMON", "YELLOW","ORANGE","PINK","PURPLE","BROWN","VIOLET","INDIGO"];
 var currentColor = 0;
 var index = [];
 var timer = 1000;
@@ -118,7 +118,7 @@ function randomChoices(){
     
             var random1 = Math.round(Math.random()*iterations);
             var random2 = Math.ceil(Math.random()*iterations);
-            var random3 = Math.ceil(Math.random()*iterations);
+            var random3 = Math.round(Math.random()*iterations);
             var random4 = Math.ceil(Math.random()*iterations);
     
             if (random1 == random2 | random1 == random3 | random1 == random4 | random2 == random4 | random2 == random3 | random3 == random4)
@@ -146,16 +146,53 @@ function randomChoices(){
                 }   
 }
 
+// -------------------------------------------------------------------------------------------------------------------------//
+// -------------------------------------------------- Alert ---------------------------------------------------
+  var close= document.getElementById('myClose');
 
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("closeReturn")[0];
 
+                var play = document.getElementById("playButton");
+
+               /*Stop The Game */
+
+                function stopTheGame(){
+                    document.getElementById("answera").disabled = true;
+                    document.getElementById("answerb").disabled = true;
+                    document.getElementById("answerc").disabled = true;
+                    document.getElementById("answerd").disabled = true;
+                 
+                    close.style.display = "block";
+                    
+                    var yourScore = document.getElementById("yourScore");
+                    var highScore = document.getElementById("yourHighscore");
+                
+                    var tulis =  score ;
+                    var tulis2 = highscorePan;
+
+                    yourScore.innerHTML = tulis;
+                    highScore.innerHTML = tulis2;
+                }
+
+            
 // -------------------------------------------------------------------------------------------------------------------------//
 // -------------------------------------------------- Timer CountDown ------------------------------------------------------//
-
+var TotalSeconds    = 5;
 var timeElement = document.getElementById('time');
-timeElement.innerHTML = '10';
-setTimeout(setInterval(timerCountdown,1000),1000);
+timeElement.innerHTML = TotalSeconds;
+var anjay = 0;
+var amboy = 0;
 
-var TotalSeconds    = 10;
+timeInterval();
+
+function timeInterval(){
+    anjay = setInterval(timerCountdown,1000);
+    amboy = setTimeout(anjay,1000);
+    
+}
+
+
 var documentWidth  = $(bar).width();
 
 function timerCountdown(){
@@ -179,19 +216,18 @@ function timerCountdown(){
       if (parseInt(timeElement.innerHTML) <= 0){
           
         timeElement.innerHTML = total;
-        if(confirm('GAME OVER')){
-            saveHighscore();
-            window.location.reload();  
-        }
+        saveHighscore();
+        stopTheGame();  
     }
     
     else{
+        
          timeElement.innerHTML = total;
     }
     
     var seconds = parseInt(timeElement.innerHTML);
-    if (seconds > 10){
-        seconds = 10;
+    if (seconds > TotalSeconds){
+        seconds = TotalSeconds;
     }
     var progresBarWidth = (seconds * documentWidth / TotalSeconds);
 
@@ -200,6 +236,8 @@ function timerCountdown(){
     }, 1000);
     
 }
+
+
 
 
 
@@ -246,12 +284,9 @@ function scoreCalculator(i){
     randomChoices();
     
      if (parseInt(timeElement.innerHTML) <= 0){
-        if(confirm('GAME OVER')){
+        
             saveHighscore();
-            window.location.reload();
-            
-            
-        }
+            stopTheGame();
     }
 }
 
@@ -280,31 +315,74 @@ function wrongAnswer(){
     
 }
 
+
 /* Storing the HighScore */
+var highscorePan = 0;
+
+var highscoreObject= {
+    current: 0,
+    highest: 0,
+};
 
 var highscore = document.getElementById("highscore");
-highscore.innerHTML = "0";
+highscore.innerHTML = 0;
+
+
 var STORAGE_KEY = "score";
 
 function saveHighscore(){
     
     // Code to save person object to Local Storage
-    highscore.innerHTML = JSON.stringify(scoreJSON);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(score));
-
+   
+    var scoreStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    scoreStorage.current = score;
+   
+    highscoreCondition(scoreStorage);
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(scoreStorage));
+    
+    if (scoreStorage.current == scoreStorage.highest && scoreStorage.current !== 0){
+        
+        highscorePan = scoreStorage.highest + " <font color='red'>NEW!</font>";
+    }
+    else{
+        
+        highscorePan = scoreStorage.highest;
+        
+    }
+    
+    
 }
 // Code to restore polygon from Local Storage
+
+
+
+function highscoreCondition(object){
+    
+     if (object.current > object.highest)
+            {
+                object.highest = object.current;
+            }
+        else{
+            
+                object.current = object.current;
+        }    
+}
 
     var scoreJSON = localStorage.getItem(STORAGE_KEY);
     if (scoreJSON)
     {
         var scoreStorage = JSON.parse(scoreJSON);
-
-        highscore.innerHTML = scoreStorage;
+        
+        highscoreCondition(scoreStorage);
+        
+        highscore.innerHTML = scoreStorage.highest;
     }
     else
     {
-        console.log("Error: No Local Storage item for \"" + STORAGE_KEY + "\" key. "); 
-        console.log("Uncomment and run the code to save person to Local Storage.");
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(highscoreObject));
     }
+
+    
+
 

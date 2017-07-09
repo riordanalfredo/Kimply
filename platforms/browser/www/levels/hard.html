@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/material.min.css">
         <script src="../css/material.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
          
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="shortcut icon" sizes="196x196" href="../img/kimply.png" />
         <link rel="apple-touch-icon-precomposed" href="../img/kimply.png" />
-        
+        <link rel="stylesheet" type="text/css" href="../css/csshake.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         
         <link rel="stylesheet" href="../css/index.css">
@@ -30,7 +30,14 @@
             <button id="myBtn" class="mdl-button mdl-js-button mdl-js-ripple-effect "> 
                 <i class="material-icons">pause</i> 
             </button>
+        <div style="float:right">
             
+        <button id="muteButton" onclick= "toogleState(this)" class="mdl-button mdl-js-button mdl-js-ripple-effect on">
+                <div id = "bg"></div>
+            </button>
+              
+        </div>    
+ 
             <!-- The Modal -->
         <div id="myModal" class="modal">
 
@@ -44,21 +51,21 @@
                     
                     <br>
                     <!-- Raised button with ripple -->
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent return closeReturn">
+                    <button id="playButton1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent return closeReturn">
                       <i class="material-icons">play_arrow</i> CONTINUE
                     </button>
-                    <br> <br> 
-                    
-                    <!-- FAB button with ripple -->
-                    <button  onclick="location.href = '../index.html'" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
-                      <i class="material-icons">home</i>
-                    </button>    
+                    <br> <br>    
                         
-                    &nbsp; &nbsp;    
+                    
                     <!-- FAB button with ripple -->
                     <button onclick="location.href = ''" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
                       <i class="material-icons">replay</i>
-                    </button>               
+                    </button>      &nbsp; &nbsp;
+                        
+                         <!-- FAB button with ripple -->
+                    <button  onclick="window.history.go(-1); return false;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
+                      <i class="material-icons">home</i>
+                    </button>     
               </div>
            </div>
         </div>
@@ -72,11 +79,11 @@
             <!-- Image -->
             <div id="card" class="card">
                 <div class="front" id="front" > 
-                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px>
+                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px class="shake-chunk">
                 </div> 
                 
                 <div class="back" id="back">
-                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px>
+                    <img src="../img/backg.png" style="position:relative;opacity:0.3;margin-top:40px" width=180px class="shake-chunk">
                 </div> 
                   <!--<img src="img/giphy.gif" width="400px">-->
                 </div>
@@ -100,23 +107,61 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('c');">
                    <b id="answerc"></b> 
                 </button> &nbsp; &nbsp; &nbsp;  
-                    <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('d');">
+                <button class="mdl-button mdl-js-button mdl-button--raised button answer" onclick="PlaySound();scoreCalculator('d');">
                    <b id="answerd"></b> 
                 </button>
                     
                 </div>
             </div>
-                <footer> Developed by &copy; ElevenFour Inc</footer>
+                <footer> Developed by &copy; Walf Redo</footer>
             
             </div>
              
      </div>
      
-       <audio id="audio" src="../bgmusic/b.mp3" autoplay loop width="2" height="0"> 
+     <div id="myClose" class="modal">
+
+          <!-- Modal content -->
+            <div class="modal-content">
+              
+                <div class="centerContent">
+                    <HR>
+                    <H4><B> GAME OVER </B></H4>
+                    <HR>
+                    
+                     <br>
+                        <table style="margin-left:25%;">
+                         <tr>
+                            <td><b>SCORE: </b> 
+                            <td> &nbsp;<font id='yourScore'>
+                            </tr>
+                            <tr>
+                            <td><b>HIGHSCORE: 
+                            <td> &nbsp;<font id='yourHighscore'>
+                            </tr>  </b> 
+                        </table>
+                         <br><br>
+                    
+                   
+                     <!-- FAB button with ripple -->
+                    <button onclick="location.href = ''" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                      <i class="material-icons">replay</i>
+                    </button>  &nbsp; &nbsp; 
+                        
+                     <!-- FAB button with ripple -->
+                    <button  onclick="window.history.go(-1); return false;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="start">
+                      <i class="material-icons">home</i>
+                    </button>  
+                            
+              </div>
+           </div>
+        </div>
+       <audio id="music" src="../bgmusic/b.mp3" autoplay loop width="2" height="0"> 
     </audio >
 
     </body>
-        
+                 
+     <script type="text/javascript" src="../js/mutegame.js"></script>         
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
@@ -127,34 +172,47 @@
           sound.play()
         }
     </script>    
+     
     <script type="text/javascript" src="../js/gamehard.js"></script>
     <script>
+        
+
     // Get the modal
-        var modal = document.getElementById('myModal');
+                var modal = document.getElementById('myModal');
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+                // Get the button that opens the modal
+                var btn = document.getElementById("myBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("closeReturn")[0];
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("closeReturn")[0];
 
-        // When the user clicks on the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
+                var play = document.getElementById("playButton1");
+        
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    clearInterval(anjay);
+                    document.getElementById("answera").disabled = true;
+                    document.getElementById("answerb").disabled = true;
+                    document.getElementById("answerc").disabled = true;
+                    document.getElementById("answerd").disabled = true;
+                    
+                    modal.style.display = "block";
+                }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
 
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }        
+                play.onclick = function() {
+                    document.getElementById("answera").disabled = true;
+                    document.getElementById("answerb").disabled = true;
+                    document.getElementById("answerc").disabled = true;
+                    document.getElementById("answerd").disabled = true; 
+                    timeInterval(); 
+                    modal.style.display = "none";
+                }       
             
         
     </script>        

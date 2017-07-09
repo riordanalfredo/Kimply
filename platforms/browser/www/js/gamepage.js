@@ -27,6 +27,7 @@ var frontBackSelector = 1;
  $('#card').flip({trigger:'manual'});
 var randomCard = Math.round(Math.random()*4);
 
+
 function switchColor() {    
             
             var randomColorIndex =  Math.round(Math.random() * 4);
@@ -291,32 +292,74 @@ function wrongAnswer(){
 }
 
 /* Storing the HighScore */
+var highscorePan = 0;
+
+var highscoreObject= {
+    current: 0,
+    highest: 0,
+};
 
 var highscore = document.getElementById("highscore");
 highscore.innerHTML = 0;
+
+
 var STORAGE_KEY = "score";
 
 function saveHighscore(){
     
     // Code to save person object to Local Storage
-    highscore.innerHTML = JSON.stringify(scoreJSON);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(score));
-
+   
+    var scoreStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    scoreStorage.current = score;
+   
+    highscoreCondition(scoreStorage);
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(scoreStorage));
+    
+    if (scoreStorage.current == scoreStorage.highest && scoreStorage.current !== 0){
+        
+        highscorePan = scoreStorage.highest + " <font color='red'>NEW!</font>";
+    }
+    else{
+        
+        highscorePan = scoreStorage.highest;
+        
+    }
+    
+    
 }
 // Code to restore polygon from Local Storage
+
+
+
+function highscoreCondition(object){
+    
+     if (object.current > object.highest)
+            {
+                object.highest = object.current;
+            }
+        else{
+            
+                object.current = object.current;
+        }    
+}
 
     var scoreJSON = localStorage.getItem(STORAGE_KEY);
     if (scoreJSON)
     {
         var scoreStorage = JSON.parse(scoreJSON);
-
-        highscore.innerHTML = scoreStorage;
+        
+        highscoreCondition(scoreStorage);
+        
+        highscore.innerHTML = scoreStorage.highest;
     }
     else
     {
-        console.log("Error: No Local Storage item for \"" + STORAGE_KEY + "\" key. "); 
-        console.log("Uncomment and run the code to save person to Local Storage.");
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(highscoreObject));
     }
+
+    
+
 
 /*printing score and highscore*/
 

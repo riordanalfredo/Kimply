@@ -15,8 +15,9 @@
                     var yourScore = document.getElementById("yourScore");
                     var highScore = document.getElementById("yourHighscore");
                 
-                    var tulis = "Score: <br>" + score ;
-                    var tulis2 = "Best: <br>" + scoreStorage;
+                    var tulis =  score ;
+            
+                    var tulis2 = highscorePan;
 
                     yourScore.innerHTML = tulis;
                     highScore.innerHTML = tulis2;
