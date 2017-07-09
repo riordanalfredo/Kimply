@@ -85,15 +85,63 @@
     <br> <br> 
     <footer> Developed by &copy; Walf Redo</footer>   
 </body>
-    <script src="cordova.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/modal.js"></script>
     <script type="text/javascript" src="js/mute.js"></script>
-    <script type="text/javascript" src="js/ads.js"></script>
     
+    <script src="cordova.js"></script>
     
-    <script>
+    <script type="text/javascript" src="AdMob.js"></script>
+    <script type="text/javascript" charset="utf-8">         
+        
+    function onDeviceReady() {
+       
+        document.removeEventListener('deviceready', onDeviceReady, false);
+         alert("test1")
+        
+        // Set AdMobAds options:
+        admob.setOptions({
+            publisherId:          "ca-app-pub-7538563445332968/2786958330",  // Required
+            interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
+            tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
+            tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
+            tappxShare:           0.5                                        // Optional
+        });
+        alert("test2")
+        
+        admob.createBannerView();
+        
+        /*document.removeEventListener('deviceready', onDeviceReady, false);
+
+        admob.setOptions({
+           publisherId:          "ca-app-pub-7538563445332968/2786958330",  // Required
+           interstitialAdId:     "ca-app-pub-7538563445332968/7524471937",  // Optional
+        });
+        
+        document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
+        prepareIntestitialAd();
+
     
+
+    function showInterstitialAd() {
+        if (isPendingInterstitial) {
+            admob.showInterstitialAd(function () {
+                    isPendingInterstitial = false;
+                    isAutoshowInterstitial = false;
+                    prepareInterstitialAd();
+            });
+        } else {
+            // The interstitial is not prepared, so in this case, we want to show the interstitial as soon as possible
+            isAutoshowInterstitial = true;
+            admob.requestInterstitialAd({
+                autoShowInterstitial: isAutoshowInterstitial
+            });
+        }
+    }*/
+    alert("test")
+}
+    document.addEventListener("deviceready", onDeviceReady, false);
      
     var audio = document.getElementById("audio")
     audio.volume = 0.5;
